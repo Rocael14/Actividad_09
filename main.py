@@ -4,7 +4,7 @@ def Menu():
     print("2. Listado de Clientes")
     print("3. Salir")
 def Total_destinos(destinos):
-    if destinos == 0:
+    if destinos == 1:
         return 0
     else:
         return destinos + Total_destinos(destinos-1)
@@ -32,7 +32,8 @@ while True:
                                 codigo_destino = input(f"Ingrese el codigo del destino #{j+1}: ")
                                 nombre_destino = input(f"Ingrese el nombre del destino #{j+1}: ")
                                 destinos[codigo_destino] = {
-                                    "nombre_destino": nombre_destino}
+                                    "nombre_destino": nombre_destino
+                                }
                                 clientes[codigo_cliente] = {
                                     "nombre_cliente": nombre_cliente,
                                     "destino": destinos
@@ -42,14 +43,17 @@ while True:
                 else:
                     print("No se puedo registrar menos de un cliente")
             case 2:
+                cantidad_destinos = 0
+                totalidad=0
                 print("Listado de Clientes")
                 for codigo_cliente, cliente in clientes.items():
                     print(f"Codigo:{codigo_cliente}")
                     print(f"Nombre:{cliente['nombre_cliente']}")
                     for codigo_destino, destino in cliente['destino'].items():
                         print(f"Destino:{destino['nombre_destino']}")
-                cantidad_destinos = Total_destinos(len(destinos))
-                print(f"Cantidad de destinos: {cantidad_destinos}")
+                        cantidad_destinos+=1
+
+                print(f"Cantidad de destinos: {Total_destinos(cantidad_destinos)}")
             case 3:
                 print("Gracias por utilzar el programa")
             case _:
