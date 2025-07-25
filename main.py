@@ -4,10 +4,11 @@ def Menu():
     print("2. Listado de Clientes")
     print("3. Salir")
 def Total_destinos(destinos):
-    if destinos == 1:
+    if destinos <= 0:
         return 0
     else:
-        return destinos + Total_destinos(destinos-1)
+        return 1 + Total_destinos(destinos - 1)
+
 
 
 clientes = {}
